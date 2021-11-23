@@ -1,12 +1,15 @@
 #include <stdio.h> //bibliotéca padrão
 #include <math.h>  //bibliotéca para operações matemáticas
-
+#include <stdbool.h>
 typedef struct
 {
 	char		nome  [30],
 				email [30];
+				
 	int			num_tel,
-				cod_person;
+				cod_person,
+				ativo_person;
+				
 } Dados;
 
 typedef struct
@@ -54,10 +57,18 @@ int main()
 	
 	printf("\n");
 	
+	for (i = 0; i < 3; i++)
+	{
+		if (cad.person[i].cod_person == del)
+		{
+			cad.person[i].ativo_person = 1;
+		}
+	}
+	
 	//imprime a nova lista dos usuários
 	for (i = 0; i < 3; i++)
 	{
-		if (cad.person[i].cod_person != del)
+		if (cad.person[i].ativo_person != 1)
 		{
 		printf("Pessoa %d.\n", cad.person[i].cod_person);
 		printf("Nome: %s.\n", cad.person[i].nome);
